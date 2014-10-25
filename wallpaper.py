@@ -14,7 +14,7 @@ import sys
 def init():
     ## options
     # "album_dir" is the directory containing the images for your photo album; please note that the path must be absolute (e.g. no "~") don't forget the last /
-    album_dir = "/home/megavolts/mediatheque/github/wallpaper_rotate/NSIDC/daily_extent"
+    album_dir = "/home/megavolts/mediatheque/git/stacked_image_wallpaper/NSIDC/daily_extent"
     #wp_image=["/mnt/data/mediatheque/graphisme/bds/Loisel/clo06.jpg"]
     
     # screen resolution
@@ -60,11 +60,7 @@ def init():
         w_max=res_x
     if h_max>res_y:
         h_max=res_y
-    
-    
-    
-    
-    # clean variable 
+    # clean variable
     #del datapath,extension,outputpath,outputfn,files,name,path,subdirs,a
     
     #wallpaper=["/mnt/data/mediatheque/graphisme/bds/Loisel/clo05.jpg","/mnt/data/mediatheque/graphisme/girly/red_star_girl.jpg"]
@@ -282,4 +278,20 @@ def load():
     im=bg
     im.show()
     print "wp loaded"
-    
+
+#def fetch_image(url, path, fname)
+import os
+import urllib
+import datetime as dt
+img_dir='/home/megavolts/mediatheque/data/NSIDC/'
+url = 'http://nsidc.org/data/seaice_index/images/n_extn.png'
+fname =
+
+# check input/output variable
+if not os.path.isdir(img_dir):  # create output directory if not present
+	os.makedirs(img_dir)
+
+imf = open(img_dir+dt.datetime.today().strftime("%Y%m%d-%H%M")+'-NSIDC-Arctic.png','wb')
+imf.write(urllib.urlopen(url).read())
+imf.close
+

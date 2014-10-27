@@ -15,7 +15,7 @@ def init():
     ## options
     # "album_dir" is the directory containing the images for your photo album; please note that the path must be absolute (e.g. no "~") don't forget the last /
     album_dir = "/home/megavolts/mediatheque/git/stacked_image_wallpaper/NSIDC/daily_extent"
-    #wp_image=["/mnt/data/mediatheque/graphisme/bds/Loisel/clo06.jpg"]
+    wp_image="20141026-1856-NSIDC-Arctic.png"
     
     # screen resolution
     #wp_manager='nitrogen'
@@ -78,37 +78,16 @@ def init():
     #    
 #
 
-# wallpaper background
-def wp_background(res_x,res_y,wallpaper):
-    for ii_im in [0,len(wallpaper)-1]:
-        im_temp=Image.open(wallpaper[ii_im])
-        im_temp=im_temp.convert("RGBA")
-        w,h=im_temp.size
-        if w>res_x | h>res_y:
-            im_temp.thumbnail((res_x,res_y),Image.ANTIALIAS)
-        elif int(float(w)/res_x>0.6) & int(float(h)/res_y>0.6):
-            scale=max(float(w)/res_x,float(h)/res_y)
-            w=int(w/scale)
-            h=int(h/scale)
-            im_temp=im_temp.resize((w,h),Image.ANTIALIAS)
-            bg=Image.new("RGBA",(res_x,res_y))
-            bg.paste(im_temp,((res_x-w)/2,(res_y-h)/2))
-            im_temp=bg
-        else:
-            bg=Image.new("RGBA",(res_x,res_y))
-            bg.paste(im_temp,((res_x-w)/2,(res_y-h)/2))
-            im_temp=bg
-    return im_temp
-    
+
 def title_def(img_path):
     name_flag=img_path.split(os.sep)[-1]
     if 'NSIDC-arctic_seaice_extent' in name_flag:
         date=dt.datetime(year=int(name_flag[-14:-10]), month=int(name_flag[-8:-7]), day=int(name_flag[-5:-4]))
         title=date.strftime('%b  %d, %Y')
-    elif 'BRW_radar'  in name_flag:
+    elif 'BRW-Radar'  in name_flag:
         date=dt.datetime(year=int(name_flag[-24:-20]), month=int(name_flag[-20:-18]), day=int(name_flag[-18:-16]), hour=int(name_flag[-15:-13]),minute=int(name_flag[-13:-11]))
         title=date.strftime('%b  %d, %Y: %H:%M')
-    elif 'BRW_webcam'  in name_flag:
+    elif 'BRW-Webcam'  in name_flag:
         date=dt.datetime(year=int(name_flag[-17:-13]), month=int(name_flag[-13:-11]), day=int(name_flag[-11:-9]), hour=int(name_flag[-8:-6]),minute=int(name_flag[-6:-4]))
         title=date.strftime('%b  %d, %Y: %H:%M')
     else:
@@ -184,7 +163,7 @@ def draw_image(img_path):
     
 def image_stack(bg,im):
     w,h=im.size
-    
+
     rand_x=0
     rand_y=0
     random.seed()
@@ -285,7 +264,6 @@ import urllib
 import datetime as dt
 img_dir='/home/megavolts/mediatheque/data/NSIDC/'
 url = 'http://nsidc.org/data/seaice_index/images/n_extn.png'
-fname =
 
 # check input/output variable
 if not os.path.isdir(img_dir):  # create output directory if not present

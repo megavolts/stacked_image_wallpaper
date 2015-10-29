@@ -11,72 +11,7 @@ import numpy as np
 import sys
 
 
-def init():
-    ## options
-    # "album_dir" is the directory containing the images for your photo album; please note that the path must be absolute (e.g. no "~") don't forget the last /
-    album_dir = "/home/megavolts/mediatheque/git/stacked_image_wallpaper/NSIDC/daily_extent"
-    wp_image="20141026-1856-NSIDC-Arctic.png"
-    
-    # screen resolution
-    #wp_manager='nitrogen'
-    res_x,res_y=1400,800
-    
-    # "w_max" and "h_max" are the maximum dimensions, in pixels, that you want the widget to be. The script will ensure that the photo album fits inside the box bounded by w_max and h_max  this is the "drop zone"
-    w_max,h_max=res_x, int(res_y/3)
-    
-    # can images go out the drop zone (0=no, else =yes)? i.e; cutted on the border of the drop zone
-    out_l = 0 # left
-    out_r = 0 # right
-    out_b = 0 # bottom
-    out_t = 0 # top
-    
-    # "xc" and "yc" are the coordinates of the center of the photo album, relative to the top left corner of the Conky window, in pixels
-    xc, yc = int(res_x/2.), int(res_y/4.)
-    
-    # dispersion of the images around xc,yc (in pixels)
-    disp_x = int(2/3.*w_max)
-    disp_y = int(1/2.*h_max)
-    
-    # pictures are resized to fit the drop zone, but they can be smaller than the drop zone if pc <=100
-    # max_size are the maximum length of the short edge
-    max_size=int(res_y/4)
-    pc = 75
-    
-    # "t" is the thickness of the frame, in % of the photo (0 = no frame)
-    t = 1
-    
-    # "s" is to draw a shadow on the bottom right side of the image (true/false) has to be improve with rotation of picture
-    s ='true'
-    
-    showtitle='true'
-    
-    # angle is the maximum angle of rotation of the image, in degrees (0-180).
-    angle = 20
-    
-    # filename of the image created by the script
-    wp_bkgd="/home/megavolts/.config/wallpaper/wp_bkgd.png"
-    
-    if w_max>res_x:
-        w_max=res_x
-    if h_max>res_y:
-        h_max=res_y
-    # clean variable
-    #del datapath,extension,outputpath,outputfn,files,name,path,subdirs,a
-    
-    #wallpaper=["/mnt/data/mediatheque/graphisme/bds/Loisel/clo05.jpg","/mnt/data/mediatheque/graphisme/girly/red_star_girl.jpg"]
-    #
-    ### wallpaper
-    #home_dir=os.path.expanduser("~")
-    #
-    #if wp_manager=='nitrogen':
-    #    wp_config="/.config/nitrogen/bg-saved.cfg"
-    #    with open(home_dir+wp_config) as wpfile:
-    #        for num,line in enumarte (wpfile,1):
-    #            if 'xin_1' in line:
-    #                lin_flag=line
-    #                return 1
-    #    
-#
+
 
 
 def title_def(img_path):
